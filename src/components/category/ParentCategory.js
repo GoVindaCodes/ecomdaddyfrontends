@@ -39,7 +39,7 @@ const ParentCategory = ({
   //   let myCategories = [];
   //   for (let category of categories) {
   //     myCategories.push({
-  //       title: showingTranslateValue(category.parent, lang),
+  //       title: showingTranslateValue1(category.parentName, lang),
   //       key: category._id,
   //       children:
   //         category.children?.length > 0 && renderCategories(category.children), // Fix
@@ -49,12 +49,12 @@ const ParentCategory = ({
   //   return myCategories;
   // };
 
-
-  const renderCategories = (categories) => {
+  // added data instead of categories for the frontend static data
+  const renderCategories = (data) => {
     let myCategories = [];
-    if (categories !== undefined) {
-      for (let category of categories) {
-        // console.log("categories from Categories Drawer :", category)
+    if (data !== undefined) {
+      for (let category of data) {
+        // console.log("childrens from Categories Drawer :", category)
         let children = [];
         if (category.children && category.children.length > 0) {
           children = category.children.map(child => ({
@@ -63,7 +63,10 @@ const ParentCategory = ({
           }));
         }
         myCategories.push({
-          title: showingTranslateValue(category?.name, lang),
+          // title: showingTranslateValue(category?.parentName, lang),
+          // placing it for the frontend static data macthings 
+          title: showingTranslateValue1(category?.parent, lang),
+          // name: showingTranslateValue1(result?.parentName, lang),
           key: category._id,
           children: children,
         });
@@ -138,7 +141,7 @@ const ParentCategory = ({
       let children = [];
       if (result.children && result.children.length > 0) {
         children = result.children.map(child => ({
-          title: showingTranslateValue(child, lang),
+          title: showingTranslateValue1(child, lang),
           key: child,
         }));
       }
@@ -146,7 +149,10 @@ const ParentCategory = ({
       setSelectedCategory(prev => {
         const newCategory = {
           _id: result?._id,
-          name: showingTranslateValue(result?.name, lang),
+          // placing it for the frontend static data macthings 
+          name: showingTranslateValue1(result?.parent, lang),
+          // name: showingTranslateValue1(result?.parentName, lang),
+          // name: showingTranslateValue1(result?.parentName, lang),
           children: children,
         };
         console.log("New category added to selectedCategory:", newCategory);
@@ -156,7 +162,9 @@ const ParentCategory = ({
       setDefaultCategory(() => [
         {
           _id: result?._id,
-          name: showingTranslateValue(result?.name, lang),
+          // placing it for the frontend static data macthings 
+          name: showingTranslateValue1(result?.parent, lang),
+          // name: showingTranslateValue1(result?.parentName, lang),
           children: children,
         },
       ]);

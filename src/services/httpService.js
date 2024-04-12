@@ -150,7 +150,7 @@ const instance = axios.create({
 instance.interceptors.request.use(function (config) {
   // Do something before request is sent
   let adminInfo = Cookies.get('adminInfo') ? JSON.parse(Cookies.get('adminInfo')) : null;
-  // console.log("AdminInfo", adminInfo);
+  console.log("AdminInfo", adminInfo);
 
   let accessToken = adminInfo ? adminInfo.accessToken : null;
 

@@ -40,6 +40,13 @@ const CategoryTable = ({
       setIsCheck(isCheck.filter((item) => item !== id));
     }
   };
+  // console.log("datas : ", categories.children.en)
+  // Assuming categories is an object with a children array property
+  // that contains objects with a name property that is an array of objects with 'en' property.
+
+  // data.children.forEach((child) => {
+  //   console.log("data : ", child.name[0]);
+  // });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,7 +74,7 @@ const CategoryTable = ({
       </MainDrawer>
 
       <TableBody>
-        {categories?.map((category) => (
+        {data?.map((category) => (
           <TableRow key={category._id}>
             <TableCell>
               <CheckBox
@@ -83,13 +90,15 @@ const CategoryTable = ({
               {category?._id?.substring(0, 9)}
             </TableCell>
             <TableCell>
-              {category?.image ? (
+              {/* {category?.image ? ( */}
+              {category?.icon ? (
                 <Avatar
                   className="hidden mr-3 md:block bg-gray-50 p-1"
-                  src={category?.image}
+                  // src={category?.image}
+                  src={category?.icon}
                   // {/* added by : Govinda 10/4/2024 */}
                   // {/* added [lang] */}
-                  alt={category?.name[lang]}
+                  alt={category?.parentName}
                 />
               ) : (
                 <Avatar
@@ -107,7 +116,8 @@ const CategoryTable = ({
                 >
                   {/* added by : Govinda 10/4/2024 */}
                   {/* added [lang] */}
-                  {category.name[lang]}
+                  {/* {category.name[lang]} */}
+                  {showingTranslateValue(category?.parent, lang)}
                   <>
                     {showChild && (
                       <>
@@ -139,13 +149,15 @@ const CategoryTable = ({
                 <span>
                   {/* added by : Govinda 10/4/2024 */}
                   {/* added [lang] */}
-                  {category.name[lang]}
+                  {category.parent}
+                  {/* {category.parentName} */}
+                  {/* hi */}
                 </span>
               )}
             </TableCell>
 
             <TableCell className="text-sm">
-              {showingTranslateValue(category?.description, lang)}
+              {/* {showingTranslateValue(category?.type, lang)} */}
               {category.type}
             </TableCell>
 

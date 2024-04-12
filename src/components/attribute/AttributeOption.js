@@ -16,7 +16,7 @@ const AttributeOption = ({
 
   const handleSelectValue = (v, el) => {
     console.log("handleValue", v, el);
-    if (el?.name[lang] === "All") {
+    if (el?.name.en === "All") {
       const result = attributes?.variants.filter((att) => att._id !== "1");
 
       setValues({
@@ -26,7 +26,7 @@ const AttributeOption = ({
 
 
       setSelectionLimit("1");
-      // setAttributeOptions([el]);
+      setAttributeOptions([el]);
     } else {
 
       setSelectionLimit(null);
@@ -97,7 +97,7 @@ const AttributeOption = ({
         ref={(e) => (resetRef.current[id] = e)}
         onSelect={(v, el) => handleSelectValue(v, el)}
         onRemove={(v, el) => handleRemoveValue(v, el, id)}
-        placeholder={showingTranslateValue(attributes.title[lang], lang)}
+        placeholder={showingTranslateValue(attributes.title.en, lang)}
       ></Multiselect>
     </>
   );

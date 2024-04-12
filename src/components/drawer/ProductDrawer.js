@@ -33,6 +33,7 @@ import AttributeOptionTwo from "components/attribute/AttributeOptionTwo";
 import DrawerButton from "components/form/DrawerButton";
 import AttributeListTable from "components/attribute/AttributeListTable";
 import { showingTranslateValue } from "utils/translate";
+import categoryData from "utils/categories";
 
 //internal import
 
@@ -244,6 +245,7 @@ const ProductDrawer = ({ id, currency }) => {
                 <LabelArea label={t("Category")} />
                 <div className="col-span-8 sm:col-span-4">
                   <ParentCategory
+                    data={categoryData}
                     lang={language}
                     selectedCategory={selectedCategory}
                     setSelectedCategory={setSelectedCategory}

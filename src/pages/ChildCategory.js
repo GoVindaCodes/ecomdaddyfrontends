@@ -64,9 +64,9 @@ const ChildCategory = () => {
       return obj._id === target
         ? obj
         : obj?.children?.reduce(
-            (acc, obj) => acc ?? findChildArray(obj, target),
-            undefined
-          );
+          (acc, obj) => acc ?? findChildArray(obj, target),
+          undefined
+        );
     };
 
     if (!loading) {
@@ -187,7 +187,7 @@ const ChildCategory = () => {
                 <TableCell>{t("catIconTbl")}</TableCell>
                 <TableCell>{t("Name")}</TableCell>
                 <TableCell>{t("Description")}</TableCell>
-            
+
                 <TableCell className="text-center">
                   {t("catPublishedTbl")}
                 </TableCell>
@@ -204,7 +204,7 @@ const ChildCategory = () => {
               isCheck={isCheck}
               setIsCheck={setIsCheck}
               useParamId={id}
-             
+
             />
           </Table>
           <TableFooter>

@@ -79,12 +79,12 @@ const CategoryDrawer = ({ id, data, lang }) => {
 
 
   // Modifications by: Govinda 3 / 4 / 20024
-
-  const renderCategories = (categories) => {
+  // changed data from categories just for this static data heree 
+  const renderCategories = (data) => {
     let myCategories = [];
-    if (categories !== undefined) {
-      for (let category of categories) {
-        // console.log("categories from Categories Drawer :", category)
+    if (data !== undefined) {
+      for (let category of data) {
+        console.log("categories from Categories Drawer :", category)
         let children = [];
         if (category.children && category.children.length > 0) {
           children = category.children.map(child => ({
@@ -93,7 +93,9 @@ const CategoryDrawer = ({ id, data, lang }) => {
           }));
         }
         myCategories.push({
-          title: showingTranslateValue(category?.name, lang),
+          // madees changes according to the new scema or data related from frontend for now 
+          title: showingTranslateValue(category?.parent, lang),
+          // title: showingTranslateValue(category?.parentName, lang),
           key: category._id,
           children: children,
         });
@@ -148,8 +150,9 @@ const CategoryDrawer = ({ id, data, lang }) => {
 
         const obj = data[0];
         const result = findObject(obj, key);
-
-        setSelectCategoryName(showingTranslateValue(result?.name, lang));
+        // madees changes according to the new scema or data related from frontend for now 
+        setSelectCategoryName(showingTranslateValue(result?.parent, lang));
+        // setSelectCategoryName(showingTranslateValue(result?.parentName, lang));
       }
     } else {
       if (key === undefined) return;
@@ -157,8 +160,9 @@ const CategoryDrawer = ({ id, data, lang }) => {
 
       const obj = data[0];
       const result = findObject(obj, key);
-
-      setSelectCategoryName(showingTranslateValue(result?.name, lang));
+      // madees changes according to the new scema or data related from frontend for now 
+      setSelectCategoryName(showingTranslateValue(result?.parent, lang));
+      // setSelectCategoryName(showingTranslateValue(result?.parentName, lang));
     }
   };
 
